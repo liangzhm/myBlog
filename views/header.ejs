@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+</head>
+<body>
+<header>
+    <div class="user">
+        <h2>
+            <%  if (user) { %>
+            当前用户是 <%= user.name %>
+            <% }  %>
+        </h2>
+    </div>
+
+    <h1><%= title %></h1>
+</header>
+<nav>
+    <span>
+        <form action="/search" method="GET">
+            <input type="text" name="keyword" placeholder="搜索" class="search" />
+        </form>
+    </span>
+    <span><a title="主页" href="/">首页</a></span>
+    <span><a title="存档" href="/archive">存档</a></span>
+    <span><a title="标签" href="/tags">标签</a></span>
+    <span><a title="友情链接" href="/links">友情链接</a></span>
+    <% if (user) { %>
+    <span><a title="发表" href="/post">发表博文</a></span>
+    <span><a title="登出" href="/logout">退出</a></span>
+    <% } else { %>
+    <span><a title="登录" href="/login">登录</a></span>
+    <span><a title="注册" href="/reg">注册</a></span>
+<% } %>
+</nav>
+<% if (success) { %>
+    <div><%= success %></div>
+    <% } %>
+    <% if (error) { %>
+    <div><%= error %> </div>
+    <% } %>
+<article>
+
+
